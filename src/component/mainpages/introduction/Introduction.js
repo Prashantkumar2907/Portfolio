@@ -8,12 +8,9 @@ const Introduction = () => {
       <div className="summary">
         <h1 className='summary-title'>Professional Summary</h1>
         <div className='summary-detail' >
-          I am a passionate Full Stack Developer with a strong foundation in both front-end and back-end technologies. 
-          My expertise includes building responsive web applications using modern JavaScript frameworks like React, 
-          along with server-side technologies such as Node.js and Express. I have a deep understanding of database 
-          management using both SQL and NoSQL solutions. My goal is to create efficient, scalable, and user-friendly 
-          applications that solve real-world problems. I am always eager to learn new skills and stay updated with 
-          the latest industry trends.
+        Motivated and detail-oriented Computer Science and Engineering student with hands-on experience in web development
+and a strong foundation in software engineering principles. Adept at using the MERN stack to build scalable web
+applications and passionate about continuous learning and problem-solving.
         </div>
       </div>
       <div className="front-image">

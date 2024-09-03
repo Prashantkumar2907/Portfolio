@@ -26,15 +26,15 @@
     border-left: 1px solid black;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center the image vertically within the container */
-    overflow: hidden; /* Hide any overflowed parts of the image */
+    align-items: center; 
+    overflow: hidden;
     height: 50vh;
 }
 
 .front-image img {
-    width: 100%; /* Make image width 100% of the container */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    width: 100%; 
+    height: auto;
+    object-fit: cover; 
     padding: 10vh;
 }
 
@@ -43,12 +43,14 @@ h1.summary-title {
     font-weight: 100;
     font-size: 2vw;
     text-transform: uppercase;
+    margin-top: 10vh;
 }
 
 .summary-detail{
     text-decoration: solid;
     text-wrap:stable;
     line-height: 1.4;
+    margin-top: 5vh;
     text-align: justify;
 }
 
