@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    padding: 2vh;
+    background-color:rgb(138, 138, 133);
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+} 
+
+header ul li{
+    display: inline-block;
+    opacity: 0.7;
+    padding: 0 1vw;
+}
+header ul li:hover{
+    opacity: 1;
+}
+
+.name-logo{
+    padding: 1vh;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.name-title a{
+    color: white;
+}
+
+.nav-item{
+    text-transform: uppercase;
+}
+
+.nav-item:hover{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1vh;
+    background-color: rgb(146, 145, 144);
+}
+
+.nav-item a:hover{
+    color: black;
+}
+
+.media-item:hover{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(148, 147, 145);
+    padding: 1vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+  
+  }
+  

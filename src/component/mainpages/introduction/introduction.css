@@ -1,0 +1,64 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+ .intro{
+    display: flex;
+    padding: 2vh;
+    justify-content: space-evenly;
+    height: 90vh;
+    align-items: center;
+    background-color: rgb(159, 156, 156);
+
+ }
+
+ .summary{
+    width: 40vw;
+    margin-right: 2vw;
+    height: 40vh;
+ }
+
+ .front-image {
+    width: 40vw;
+    border-left: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the image vertically within the container */
+    overflow: hidden; /* Hide any overflowed parts of the image */
+    height: 50vh;
+}
+
+.front-image img {
+    width: 100%; /* Make image width 100% of the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    padding: 10vh;
+}
+
+h1.summary-title {   
+    margin-bottom: 5vh;
+    font-weight: 100;
+    font-size: 2vw;
+    text-transform: uppercase;
+}
+
+.summary-detail{
+    text-decoration: solid;
+    text-wrap:stable;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.summary-title:hover{
+    cursor:context-menu
+}
+
+.summary-detail:hover{
+    cursor:context-menu;
+}
+
+ 
+
