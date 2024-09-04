@@ -6,24 +6,45 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Header = () => {
   return (
-    <header className="header">
-    <div className="name-logo">
-       <h1 className='name-title'> <Link to="/">Pr</Link> </h1>
-    </div>
-    <nav className="nav">
-        <ul className="nav-list">
-            <li className="nav-item"><Link to="/about">About</Link></li>
-            <li className="nav-item"><Link to="/skills">Skills</Link></li>
-            <li className="nav-item"><Link to="/projects">Projects</Link></li>
-            <li className="nav-item"><Link to="/contact">Contact</Link></li>
-        </ul>
-    </nav>
-    <ul className='media' >
-            <li className='media-item'><FaInstagram /></li>
-            <li className='media-item'><FaGithub /></li>
-            <li className='media-item'><RiTwitterXLine /></li>
-    </ul>
-    </header>
+    <nav   class="navbar navbar-expand-lg bg-secondary " >
+      <div  class="container-fluid ">
+
+          <div className="name-logo w-2" >
+             <a class="navbar-brand   " className='name-title' href="#">
+               <Link to="/">Pr</Link>
+             </a>
+          </div>
+
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+
+        <div class="collapse navbar-collapse" className='nav' id="navbarNavDropdown">
+          <ul class="navbar-nav">
+           <li class="nav-item" >
+             <Link class="nav-link active" aria-current="page" to="/about">About</Link>
+           </li>
+           <li class="nav-item" className='nav-item'>
+             <Link class="nav-link" to="/skills">Skills</Link>
+           </li>
+           <li class="nav-item">
+             <Link class="nav-link" to="/projects">Projects</Link>
+           </li>
+      
+         <li class=" dropdown"  >
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Social Link
+          </a>
+          <ul class="dropdown-menu" >
+            <li><Link class="dropdown-item" to="#"><FaInstagram /></Link></li>
+            <li><Link class="dropdown-item" to="#"><FaGithub /></Link></li>
+            <li><Link class="dropdown-item" to="#"><RiTwitterXLine /></Link></li>
+          </ul>
+       </li>
+       </ul>
+     </div>
+     </div>
+   </nav>
 
   )
 }

@@ -1,23 +1,25 @@
-import React, { useEffect, useRef } from 'react';
-import Introimage from '../assets/image.jpg'; // Corrected the import
-
+import React from 'react';
+import Introimage from '../assets/image.jpg'; 
 const Introduction = () => {
 
   return (
-    <div className='intro'>
-      <div className="summary">
-        <h1 className='summary-title'>Professional Summary</h1>
-        <div className='summary-detail' >
-        Motivated and detail-oriented Computer Science and Engineering student with hands-on experience in web development
-and a strong foundation in software engineering principles. Adept at using the MERN stack to build scalable web
-applications and passionate about continuous learning and problem-solving.
-        </div>
-      </div>
-      <div className="front-image">
-        <img src={Introimage} alt="Introduction" />
+<div class="bg-secondary min-vh-100 d-flex flex-column "  >
+  <div class="row g-0 flex-grow-1 ">
+    <div class="col-md-6 p-5 bg-secondary d-flex justify-content-center align-items-center ">
+      <img src={Introimage} class="img-fluid rounded-5" alt="..."/>
+    </div>
+    <div class="col-md-6 d-flex align-items-center bg-secondary ">
+      <div class="card-body d-grid align-items-center ">
+        <div class="card-title text-uppercase fs-3 fw-bolder  ">Professional Summary</div>
+        <div class="card-text text-center fs-5 lh-big font-monospace  "> 
+          Motivated and detail-oriented Computer Science and Engineering student with hands-on experience in web development
+              and a strong foundation in software engineering principles. Adept at using the MERN stack to build scalable and responsive web
+               applications and passionate about continuous learning and problem-solving.
+        </div>     
       </div>
     </div>
+  </div>
+</div>
   );
 }
-
 export default Introduction;

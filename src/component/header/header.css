@@ -13,18 +13,30 @@ header {
     background-color:rgb(138, 138, 133);
 }
 
+.dropdown-item:hover {
+    border-radius: 5px;
+    background-color: rgb(225, 225, 220);
+    opacity: 1; 
+}
+
+.dropdown-menu{
+    background-color: beige;
+}
+
+
+
 a{
     text-decoration: none;
     color: black;
     text-align: center;
 } 
 
-header ul li{
+nav ul li{
     display: inline-block;
-    opacity: 0.7;
+    opacity: 0.8;
     padding: 0 1vw;
 }
-header ul li:hover{
+nav ul li:hover{
     opacity: 1;
 }
 
@@ -32,6 +44,7 @@ header ul li:hover{
     padding: 1vh;
     background-color: black;
     border-radius: 5px;
+    
 }
 
 .name-title a{
@@ -43,37 +56,21 @@ header ul li:hover{
 }
 
 .nav-item:hover{
-    border: 1px solid black;
     border-radius: 5px;
-    padding: 1vh;
-    background-color: rgb(146, 145, 144);
+    opacity: 1.4;
 }
 
-.nav-item a:hover{
-    color: black;
+.dropdown-item {
+    text-align: center;
 }
 
-.media-item:hover{
-    border: 1px solid black;
+.dropdown-menu {
+    min-width: 80px;  
+}
+
+.dropdown-menu li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
-    background-color: rgb(148, 147, 145);
-    padding: 1vh;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-  
-  }
-  
