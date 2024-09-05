@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FaInstagram } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { RiTwitterXLine } from "react-icons/ri";
+// import { FaInstagram } from "react-icons/fa";
+// import { FaGithub } from "react-icons/fa";
+// import { RiTwitterXLine } from "react-icons/ri";
 
 const Header = () => {
   return (
-    <nav   class="navbar navbar-expand-lg bg-secondary " >
+    <nav   class="navbar navbar-expand-lg bg-body-secondary position-sticky top-0 " >
       <div  class="container-fluid ">
 
           <div className="name-logo w-2" >
@@ -31,7 +31,7 @@ const Header = () => {
              <Link class="nav-link" to="/projects">Projects</Link>
            </li>
       
-         <li class=" dropdown"  >
+         {/* <li class=" dropdown"  >
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Social Link
           </a>
@@ -40,7 +40,7 @@ const Header = () => {
             <li><Link class="dropdown-item" to="#"><FaGithub /></Link></li>
             <li><Link class="dropdown-item" to="#"><RiTwitterXLine /></Link></li>
           </ul>
-       </li>
+       </li> */}
        </ul>
      </div>
      </div>

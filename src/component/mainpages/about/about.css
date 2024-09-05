@@ -1,0 +1,244 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    
+    background-color: rgb(183, 192, 194);
+}
+
+.about{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;  
+}
+
+.about-container{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: -100px;
+    background-color: rgb(148, 245, 245);
+    min-height: 60vh;
+    min-width: 50vw;
+    border-radius: 7px;
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about-image{
+    width: 40vw;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    body {
+      background-color: rgb(174, 186, 192);
+    }
+
+    .about-container{
+        width: 90vw;
+    }
+
+    .about-image{
+        width: 40vw;
+    }
+  }
+
+
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.education-container{
+    max-height: 35vh;
+    max-width: 100%;
+    margin-bottom: 2vh;
+}
+
+h5{
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: larger;
+    font-weight:bolder ;
+    font-family: monospace Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 2vh;
+}
+
+.education-details{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+p{
+    margin: 0;
+}
+
+.college-education{
+    padding: 1vh;
+}
+
+#first{
+    font-family: monospace;
+    text-align: center;
+    font-weight: bold;
+}
+
+#second{
+    font-family: monospace;
+    text-align: center;
+    font-size: medium;
+}
+
+.secondary-education{
+    padding: 1vh;
+}
+
+.media-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    bottom: 0;
+    min-height: 10vh;
+}
+
+.instagram:hover,.linkedin:hover,.github:hover,.twitter:hover{
+    padding: 1vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(124, 233, 250);
+} */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    
+    background-color: rgb(183, 192, 194);
+}
+
+.about{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;  
+}
+
+.about-container{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: -100px;
+    background-color: rgb(148, 245, 245);
+    min-height: 60vh;
+    min-width: 60vw;
+    border-radius: 7px;
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 450px) {
+    body {
+      background-color: lightblue;
+    }
+
+    .about-container{
+        width: 80vw;
+    }
+  }
+
+.about-image{
+    width: 40vw;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    object-fit: fill;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.education-container{
+    max-height: 30vh;
+    max-width: 100%;
+    
+}
+
+h5{
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: larger;
+    font-weight:bolder ;
+    font-family: monospace Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 2vh;
+}
+
+.education-details{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2vh;
+}
+
+p{
+    margin: 0;
+}
+
+.college-education{
+    padding: 1vh;
+}
+
+#first{
+    font-family: monospace;
+    text-align: center;
+    font-weight: bold;
+}
+
+#second{
+    font-family: monospace;
+    text-align: center;
+    font-size: medium;
+}
+
+.secondary-education{
+    padding: 1vh;
+}
+
+.media-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.instagram:hover,.linkedin:hover,.github:hover,.twitter:hover{
+    padding: 1vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(124, 233, 250);
+}

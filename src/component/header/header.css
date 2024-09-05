@@ -10,10 +10,9 @@ header {
     align-items: center;
     height: 10vh;
     padding: 2vh;
-    background-color:rgb(138, 138, 133);
 }
 
-.dropdown-item:hover {
+/* .dropdown-item:hover {
     border-radius: 5px;
     background-color: rgb(225, 225, 220);
     opacity: 1; 
@@ -21,9 +20,7 @@ header {
 
 .dropdown-menu{
     background-color: beige;
-}
-
-
+} */
 
 a{
     text-decoration: none;
