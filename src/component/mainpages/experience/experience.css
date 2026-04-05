@@ -1,0 +1,18 @@
+.experience-section {
+  background-color: var(--bg-darker);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure the date text is legible on dark background */
+.vertical-timeline-element-date {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+@media (max-width: 1169px) {
+  .vertical-timeline-element-date {
+    color: #cbd5e1 !important; /* Lighter inside cards */
+  }
+}

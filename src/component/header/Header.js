@@ -1,52 +1,37 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-// import { FaInstagram } from "react-icons/fa";
-// import { FaGithub } from "react-icons/fa";
-// import { RiTwitterXLine } from "react-icons/ri";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-scroll';
+import './header.css';
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav   class="navbar navbar-expand-lg bg-body-secondary position-sticky top-0 " >
-      <div  class="container-fluid ">
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <div className="header-container">
+        <div className="logo">
+          <Link to="home" smooth={true} duration={500} style={{cursor:'pointer'}}>
+            {'</> PRASHANT'}
+          </Link>
+        </div>
+        <nav className="nav-menu">
+          <Link to="home" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Home</Link>
+          <Link to="about" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>About</Link>
+          <Link to="skills" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Skills</Link>
+          <Link to="experience" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Experience</Link>
+          <Link to="projects" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Projects</Link>
+          <Link to="contact" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Contact</Link>
+        </nav>
+      </div>
+    </header>
+  );
+};
 
-          <div className="name-logo w-2" >
-             <a class="navbar-brand   " className='name-title' href="#">
-               <Link to="/">Pr</Link>
-             </a>
-          </div>
-
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-
-        <div class="collapse navbar-collapse" className='nav' id="navbarNavDropdown">
-          <ul class="navbar-nav">
-           <li class="nav-item" >
-             <Link class="nav-link active" aria-current="page" to="/about">About</Link>
-           </li>
-           <li class="nav-item" className='nav-item'>
-             <Link class="nav-link" to="/skills">Skills</Link>
-           </li>
-           <li class="nav-item">
-             <Link class="nav-link" to="/projects">Projects</Link>
-           </li>
-      
-         {/* <li class=" dropdown"  >
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Social Link
-          </a>
-          <ul class="dropdown-menu" >
-            <li><Link class="dropdown-item" to="#"><FaInstagram /></Link></li>
-            <li><Link class="dropdown-item" to="#"><FaGithub /></Link></li>
-            <li><Link class="dropdown-item" to="#"><RiTwitterXLine /></Link></li>
-          </ul>
-       </li> */}
-       </ul>
-     </div>
-     </div>
-   </nav>
-
-  )
-}
-
-export default Header
+export default Header;

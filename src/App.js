@@ -1,16 +1,14 @@
 import React from 'react'
 import Header from './component/header/Header'
 import Pages from './component/mainpages/Pages'
-import { BrowserRouter as Router } from 'react-router-dom'
+import './index.css'
 
 const App = () => {
   return (
-    <Router>
     <div>
       <Header/> 
       <Pages/> 
     </div>
-    </Router>
   )
 }
 
