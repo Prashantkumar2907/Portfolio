@@ -1,58 +1,74 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
-import Introimage from '../assets/image.jpg'; 
-import './introduction.css';
+import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { Link } from 'react-scroll';
+import './introduction.css';
 
 const Introduction = () => {
   return (
-    <section id="home" className="hero-section">
+    <section id="home" className="hero">
+      <div className="hero-bg-grid" />
       <div className="container hero-container">
-        <motion.div 
+        <motion.div
           className="hero-content"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="greeting">Hi There,</h2>
-          <h1 className="name">I'm <span>Prashant Kumar</span></h1>
-          <h3 className="typing-text">
-            I am a{' '}
-            <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>
-              <Typewriter
-                words={['AI Systems Engineer', 'Software Engineer', 'Full-Stack Developer']}
-                loop={0}
-                cursor
-                cursorStyle='|'
-                typeSpeed={80}
-                deleteSpeed={50}
-                delaySpeed={1500}
-              />
-            </span>
-          </h3>
+          <span className="hero-badge">Available for opportunities</span>
+          <h1 className="hero-name">
+            Prashant Kumar
+          </h1>
+          <h2 className="hero-role">
+            <Typewriter
+              words={['Full-Stack AI Engineer', 'Software Engineer', 'Frontend Developer']}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={40}
+              delaySpeed={2000}
+            />
+          </h2>
           <p className="hero-desc">
-            Dynamic AI Systems Engineer and Full-Stack Developer specializing in multi-agent orchestration, LLM integration, and scalable cloud solutions.
+            Building intelligent systems with LLM-driven multi-agent orchestration, 
+            scalable full-stack architectures, and seamless user experiences.
           </p>
-          <Link to="about" smooth={true} duration={500} offset={-80} className="cta-button">
-            About Me 
-          </Link>
+
+          <div className="hero-actions">
+            <Link to="contact" smooth={true} duration={500} offset={-60} className="btn-primary">
+              Get in Touch
+            </Link>
+            <a href="/Prashant_Resume.pdf" download className="btn-outline">
+              Download CV
+            </a>
+          </div>
+
+          <div className="hero-socials">
+            <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"><FiGithub /></a>
+            <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
+            <a href="mailto:mishraprashant2002@gmail.com" aria-label="Email"><FiMail /></a>
+          </div>
         </motion.div>
 
-        <motion.div 
-          className="hero-image"
-          initial={{ opacity: 0, scale: 0.8 }}
+        <motion.div
+          className="hero-visual"
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="img-wrapper">
-             <img src={Introimage} alt="Prashant Kumar" />
+          <div className="hero-image-ring">
+            <img src={require('../assets/image.jpg')} alt="Prashant Kumar" />
           </div>
         </motion.div>
       </div>
-      
+
+      <Link to="about" smooth={true} duration={500} offset={-60} className="scroll-indicator">
+        <FiArrowDown />
+      </Link>
     </section>
   );
-}
+};
 
 export default Introduction;

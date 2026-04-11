@@ -1,36 +1,104 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-scroll';
+import { useTheme } from '../../context/ThemeContext';
+import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 import './header.css';
+
+const navItems = [
+  { to: 'home', label: 'Home' },
+  { to: 'about', label: 'About' },
+  { to: 'skills', label: 'Skills' },
+  { to: 'experience', label: 'Experience' },
+  { to: 'projects', label: 'Projects' },
+  { to: 'contact', label: 'Contact' },
+];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    document.body.style.overflow = 'auto';
+  }, []);
+
+  const openMenu = useCallback(() => {
+    setMenuOpen(true);
+    document.body.style.overflow = 'hidden';
+  }, []);
+
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="header-container">
-        <div className="logo">
-          <Link to="home" smooth={true} duration={500} style={{cursor:'pointer'}}>
-            {'</> PRASHANT'}
+    <>
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <div className="header-container">
+          <Link to="home" smooth={true} duration={500} className="logo" style={{ cursor: 'pointer' }}>
+            PK<span className="logo-dot">.</span>
           </Link>
+
+          <nav className="nav-desktop">
+            {navItems.map(item => (
+              <Link
+                key={item.to}
+                to={item.to}
+                smooth={true}
+                duration={500}
+                offset={-60}
+                className="nav-link"
+                activeClass="active"
+                spy={true}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="header-actions">
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDark ? <FiSun /> : <FiMoon />}
+            </button>
+            <button
+              className="menu-toggle"
+              onClick={menuOpen ? closeMenu : openMenu}
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
-        <nav className="nav-menu">
-          <Link to="home" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Home</Link>
-          <Link to="about" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>About</Link>
-          <Link to="skills" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Skills</Link>
-          <Link to="experience" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Experience</Link>
-          <Link to="projects" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Projects</Link>
-          <Link to="contact" smooth={true} duration={500} offset={-55} className="nav-link" activeClass="active" spy={true}>Contact</Link>
-        </nav>
-      </div>
-    </header>
+      </header>
+
+      {/* Mobile Overlay */}
+      <div className={`mobile-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu} />
+      <nav className={`nav-mobile ${menuOpen ? 'open' : ''}`}>
+        {navItems.map((item, i) => (
+          <Link
+            key={item.to}
+            to={item.to}
+            smooth={true}
+            duration={500}
+            offset={-60}
+            className="nav-mobile-link"
+            activeClass="active"
+            spy={true}
+            onClick={closeMenu}
+            style={{ animationDelay: menuOpen ? `${i * 50}ms` : '0ms' }}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+    </>
   );
 };
 
