@@ -42,6 +42,22 @@
   color: var(--primary);
 }
 
+/* When header is transparent (on top of hero), use hero text color for better contrast */
+.header:not(.scrolled) .logo {
+  color: var(--hero-text);
+}
+.header:not(.scrolled) .logo-dot {
+  color: var(--primary-light);
+}
+
+/* When header becomes scrolled (solid background), revert to theme text color */
+.header.scrolled .logo {
+  color: var(--text-primary);
+}
+.header.scrolled .logo-dot {
+  color: var(--primary);
+}
+
 /* Desktop Nav */
 .nav-desktop {
   display: none;
