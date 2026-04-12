@@ -13,7 +13,7 @@ const Footer = () => {
 
         <div className="footer-links">
           <a
-            href="https://github.com/prashant-2204"
+            href="https://github.com/Prashantkumar2907"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -21,7 +21,7 @@ const Footer = () => {
             <FiGithub />
           </a>
           <a
-            href="https://www.linkedin.com/in/prashant-mishra-4736b5235/"
+            href="https://www.linkedin.com/in/prashant-kumar-ab124122a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"

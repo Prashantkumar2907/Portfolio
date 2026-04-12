@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiFileText, FiDownload, FiX, FiMapPin, FiCalendar, FiBriefcase } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiFileText, FiDownload, FiX, FiMapPin, FiCalendar, FiBriefcase } from 'react-icons/fi';
 import './about.css';
 
 const About = () => {
@@ -61,10 +61,8 @@ const About = () => {
 
             <div className="about-actions">
               <div className="social-links">
-                <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
-                <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"><FiGithub /></a>
-                <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter"><FiTwitter /></a>
-                <a href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><FiInstagram /></a>
+                <a href="https://www.linkedin.com/in/prashant-kumar-ab124122a?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
+                <a href="https://github.com/Prashantkumar2907" target="_blank" rel="noreferrer" aria-label="GitHub"><FiGithub /></a>
               </div>
               <div className="resume-actions">
                 <button className="btn-resume" onClick={() => setIsResumeOpen(true)}>
