@@ -8,7 +8,8 @@ export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('portfolio-theme');
     if (saved) return saved === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Default to dark theme when no saved preference exists
+    return true;
   });
 
   useEffect(() => {

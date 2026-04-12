@@ -39,23 +39,7 @@
   border-color: var(--primary);
 }
 
-.footer-top {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.footer-top:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-}
+/* footer-top removed */
 
 @media (max-width: 480px) {
   .footer-inner {

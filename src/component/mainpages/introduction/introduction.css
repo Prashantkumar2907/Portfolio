@@ -178,22 +178,7 @@
 }
 
 /* Scroll Indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--hero-sub);
-  font-size: 1.2rem;
-  cursor: pointer;
-  animation: bounce 2s ease infinite;
-  z-index: 1;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
+/* scroll-indicator removed */
 
 /* ===== RESPONSIVE ===== */
 @media (min-width: 768px) {

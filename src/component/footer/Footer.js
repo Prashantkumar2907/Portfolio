@@ -1,6 +1,5 @@
 import React from 'react';
-import { FiGithub, FiLinkedin, FiArrowUp } from 'react-icons/fi';
-import { Link } from 'react-scroll';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import './footer.css';
 
 const Footer = () => {
@@ -30,15 +29,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <Link
-          to="introduction"
-          smooth
-          duration={600}
-          className="footer-top"
-          aria-label="Back to top"
-        >
-          <FiArrowUp size={16} />
-        </Link>
+        {/* back-to-top removed per request */}
       </div>
     </footer>
   );

@@ -64,9 +64,7 @@ const Introduction = () => {
         </motion.div>
       </div>
 
-      <Link to="about" smooth={true} duration={500} offset={-60} className="scroll-indicator">
-        <FiArrowDown />
-      </Link>
+      {/* scroll indicator removed per request */}
     </section>
   );
 };
