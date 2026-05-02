@@ -14,6 +14,7 @@ import './skills.css';
 const skillCategories = [
   {
     title: 'Languages',
+    tier: 'Expert',
     skills: [
       { name: 'Java', icon: <FaJava /> },
       { name: 'Python', icon: <FaPython /> },
@@ -23,6 +24,7 @@ const skillCategories = [
   },
   {
     title: 'Frontend',
+    tier: 'Expert',
     skills: [
       { name: 'React.js', icon: <FaReact /> },
       { name: 'Angular', icon: <SiAngular /> },
@@ -31,6 +33,7 @@ const skillCategories = [
   },
   {
     title: 'Backend & Cloud',
+    tier: 'Proficient',
     skills: [
       { name: 'FastAPI', icon: <SiFastapi /> },
       { name: 'Django', icon: <SiDjango /> },
@@ -42,6 +45,7 @@ const skillCategories = [
   },
   {
     title: 'AI & Databases',
+    tier: 'Proficient',
     skills: [
       { name: 'LLM / RAG', icon: <BsRobot /> },
       { name: 'PostgreSQL', icon: <SiPostgresql /> },
@@ -66,7 +70,10 @@ const Skills = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
             >
-              <h3 className="category-title">{category.title}</h3>
+              <div className="category-header">
+                <h3 className="category-title">{category.title}</h3>
+                <span className={`category-tier category-tier--${category.tier.toLowerCase()}`}>{category.tier}</span>
+              </div>
               <div className="skills-grid">
                 {category.skills.map((skill, i) => (
                   <div className="skill-chip" key={i}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiFileText, FiDownload, FiX, FiMapPin, FiCalendar, FiBriefcase } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiFileText, FiDownload, FiX, FiMapPin, FiCalendar, FiBriefcase, FiCode, FiExternalLink } from 'react-icons/fi';
 import './about.css';
 
 const About = () => {
@@ -14,7 +14,8 @@ const About = () => {
   const quickFacts = [
     { icon: <FiBriefcase />, label: 'Role', value: 'Full-Stack AI Engineer' },
     { icon: <FiMapPin />, label: 'Location', value: 'Bangalore, India' },
-    { icon: <FiCalendar />, label: 'Experience', value: '1.5+ Years' },
+    { icon: <FiCalendar />, label: 'Experience', value: '2+ Years' },
+    { icon: <FiCode />, label: 'Projects Shipped', value: '10+' },
   ];
 
   return (
@@ -41,10 +42,13 @@ const About = () => {
             transition={{ duration: 0.5 }}
           >
             <p className="about-bio">
-              Dynamic software developer with hands-on experience specializing in full-stack development 
-              and AI multi-agent orchestration. Achievements include enhancing user interfaces, building 
-              intelligent automation platforms, and delivering scalable solutions using React.js, FastAPI, 
-              and cloud-native technologies.
+              Full-Stack AI Engineer with 2+ years building production systems that ship and scale.
+              Delivered an end-to-end AI claims automation platform at <strong>DentalX</strong> that
+              automates the full claim lifecycle — saving hours of manual review per day. Shipped 
+              <strong> Bharat Briefs</strong> to the Google Play Store, an LLM-powered news app with 
+              multilingual summarization. Across 5 companies, I've built multi-agent orchestration 
+              systems, RAG pipelines, real-time dashboards, and voice AI integrations using React, 
+              FastAPI, GCP, and Vertex AI.
             </p>
 
             <div className="quick-facts">
@@ -88,8 +92,11 @@ const About = () => {
             transition={{ duration: 0.25 }}
           >
             <div className="resume-header">
-              <h3>Resume</h3>
+              <h3>Resume — Prashant Kumar</h3>
               <div className="resume-header-actions">
+                <a href="/Prashant_Resume.pdf" target="_blank" rel="noreferrer" className="btn-modal-newtab">
+                  <FiExternalLink /> Open
+                </a>
                 <a href="/Prashant_Resume.pdf" download className="btn-modal-download">
                   <FiDownload /> Download
                 </a>
@@ -114,3 +121,4 @@ const About = () => {
 };
 
 export default About;
+

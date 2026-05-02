@@ -5,13 +5,13 @@
 
 .timeline {
   position: relative;
-  padding-left: 28px;
+  padding-left: 24px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 7px;
+  left: 6px;
   top: 8px;
   bottom: 8px;
   width: 2px;
@@ -20,7 +20,7 @@
 
 .timeline-item {
   position: relative;
-  padding-bottom: 28px;
+  padding-bottom: 20px;
 }
 
 .timeline-item:last-child {
@@ -29,10 +29,10 @@
 
 .timeline-marker {
   position: absolute;
-  left: -28px;
+  left: -24px;
   top: 4px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--primary);
   display: flex;
@@ -41,7 +41,7 @@
   color: #fff;
   font-size: 0.5rem;
   z-index: 1;
-  box-shadow: 0 0 0 4px var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--bg-primary);
 }
 
 .timeline-marker svg {
@@ -52,13 +52,33 @@
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
+  padding: 14px 16px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .timeline-card:hover {
   border-color: var(--primary);
   box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Achievement pill */
+.timeline-achievement {
+  margin: 6px 0 10px;
+}
+
+.achievement-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary-light);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  letter-spacing: 0.01em;
 }
 
 .timeline-card-header {
@@ -71,14 +91,14 @@
 }
 
 .timeline-title {
-  font-size: 0.95rem;
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 2px;
 }
 
 .timeline-company {
-  font-size: 0.85rem;
+  font-size: clamp(0.78rem, 1.8vw, 0.85rem);
   color: var(--primary);
   font-weight: 500;
 }
@@ -97,14 +117,14 @@
 }
 
 .timeline-date {
-  font-size: 0.75rem;
+  font-size: clamp(0.68rem, 1.5vw, 0.75rem);
   font-weight: 600;
   color: var(--text-secondary);
   white-space: nowrap;
 }
 
 .timeline-location {
-  font-size: 0.72rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.72rem);
   color: var(--text-tertiary);
 }
 
@@ -115,11 +135,11 @@
 
 .timeline-points li {
   position: relative;
-  padding-left: 16px;
-  font-size: 0.85rem;
+  padding-left: 14px;
+  font-size: clamp(0.78rem, 1.8vw, 0.85rem);
   line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .timeline-points li::before {
@@ -148,15 +168,15 @@
   }
   .timeline-marker {
     left: -36px;
-    width: 24px;
-    height: 24px;
-    font-size: 0.65rem;
-  }
-  .timeline-marker svg {
-    display: block;
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 0 0 4px var(--bg-primary);
   }
   .timeline-card {
-    padding: 20px 24px;
+    padding: 18px 20px;
+  }
+  .timeline-item {
+    padding-bottom: 24px;
   }
 }
 

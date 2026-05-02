@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import './footer.css';
 
 const Footer = () => {
@@ -27,12 +27,17 @@ const Footer = () => {
           >
             <FiLinkedin />
           </a>
+          <a
+            href="mailto:mishraprashant2002@gmail.com"
+            aria-label="Email"
+          >
+            <FiMail />
+          </a>
         </div>
-
-        {/* back-to-top removed per request */}
       </div>
     </footer>
   );
 };
 
 export default Footer;
+

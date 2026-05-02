@@ -1,14 +1,22 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
-import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-scroll';
 import './introduction.css';
+
+const stats = [
+  { value: '2+', label: 'Years Exp.' },
+  { value: '5+', label: 'Companies' },
+  { value: '10+', label: 'Projects' },
+  { value: '3+', label: 'AI Systems' },
+];
 
 const Introduction = () => {
   return (
     <section id="home" className="hero">
       <div className="hero-bg-grid" />
+      <div className="hero-bg-glow" />
       <div className="container hero-container">
         <motion.div
           className="hero-content"
@@ -16,7 +24,10 @@ const Introduction = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="hero-badge">Available for opportunities</span>
+          <span className="hero-badge">
+            <span className="hero-badge-dot" />
+            Available for opportunities
+          </span>
           <h1 className="hero-name">
             Prashant Kumar
           </h1>
@@ -50,6 +61,21 @@ const Introduction = () => {
             <a href="https://www.linkedin.com/in/prashant-kumar-ab124122a?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
             <a href="mailto:mishraprashant2002@gmail.com" aria-label="Email"><FiMail /></a>
           </div>
+
+          {/* Stats bar */}
+          <motion.div
+            className="hero-stats"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            {stats.map((s, i) => (
+              <div className="hero-stat" key={i}>
+                <span className="hero-stat-value">{s.value}</span>
+                <span className="hero-stat-label">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -64,7 +90,10 @@ const Introduction = () => {
         </motion.div>
       </div>
 
-      {/* scroll indicator removed per request */}
+      {/* Scroll hint */}
+      <Link to="about" smooth={true} duration={500} offset={-60} className="scroll-hint" aria-label="Scroll down">
+        <FiChevronDown />
+      </Link>
     </section>
   );
 };

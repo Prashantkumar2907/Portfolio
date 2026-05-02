@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiSmartphone } from 'react-icons/fi';
 import './projects.css';
 
 const projects = [
@@ -8,29 +8,33 @@ const projects = [
     title: 'Bharat Briefs',
     subtitle: 'AI News Aggregator App',
     description:
-      'AI-powered news aggregation platform that fetches articles from multiple sources and generates concise 3-point summaries for quick consumption across multiple languages.',
-    tech: ['React.js', 'FastAPI', 'LLMs', 'MongoDB'],
+      'AI-powered news aggregation platform that fetches articles from multiple sources and generates concise 3-point summaries for quick consumption across multiple languages. Shipped to Android users via Google Play.',
+    tech: ['React Native', 'FastAPI', 'LLMs', 'MongoDB'],
     highlights: [
       'LLM-based summarization pipeline',
       'Multilingual content delivery',
       'Engagement-based trending system',
     ],
-    github: '#',
-    demo: '#',
+    github: null,
+    demo: 'https://play.google.com/store/apps/details?id=com.prashant.tldrbharat&pcampaignid=web_share',
+    demoLabel: 'Play Store',
+    demoIcon: 'playstore',
   },
   {
     title: 'DentalX Platform',
     subtitle: 'AI Claims Automation',
     description:
-      'Full-stack AI claims automation using LLM-driven multi-agent orchestration for auto-validation, data correction, submission, and manual review routing.',
+      'Full-stack AI claims automation using LLM-driven multi-agent orchestration for auto-validation, data correction, submission, and manual review routing. Live in production.',
     tech: ['FastAPI', 'BigQuery', 'Vertex AI', 'Twilio'],
     highlights: [
       'End-to-end claim lifecycle agents',
       'RAG-based policy analysis',
       'Voice-based patient outreach',
     ],
-    github: '#',
-    demo: '#',
+    github: null,
+    demo: 'https://app.beta.dental-x.ai',
+    demoLabel: 'Live App',
+    demoIcon: 'external',
   },
 ];
 
@@ -67,12 +71,17 @@ const Projects = () => {
                 </div>
               </div>
               <div className="project-footer">
-                <a href={project.github} className="project-link" aria-label="Source code">
-                  <FiGithub /> Code
-                </a>
-                <a href={project.demo} className="project-link" aria-label="Live demo">
-                  <FiExternalLink /> Demo
-                </a>
+                {project.github && (
+                  <a href={project.github} className="project-link" target="_blank" rel="noreferrer" aria-label="Source code">
+                    <FiGithub /> Code
+                  </a>
+                )}
+                {project.demo && (
+                  <a href={project.demo} className="project-link project-link--primary" target="_blank" rel="noreferrer" aria-label={project.demoLabel}>
+                    {project.demoIcon === 'playstore' ? <FiSmartphone /> : <FiExternalLink />}
+                    {project.demoLabel}
+                  </a>
+                )}
               </div>
             </motion.article>
           ))}

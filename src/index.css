@@ -85,7 +85,7 @@ body {
 
 /* ===== LAYOUT ===== */
 section {
-  padding: 64px 24px;
+  padding: 40px 16px;
   position: relative;
 }
 
@@ -97,10 +97,10 @@ section {
 
 /* ===== SECTION TITLE ===== */
 .section-title {
-  font-size: 1.75rem;
+  font-size: clamp(1.15rem, 3vw, 1.75rem);
   font-weight: 700;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
   position: relative;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -112,7 +112,7 @@ section {
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
+  width: 36px;
   height: 3px;
   background-color: var(--primary);
   border-radius: 2px;
@@ -180,17 +180,20 @@ section {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (min-width: 480px) {
+  section {
+    padding: 48px 20px;
+  }
+}
+
 @media (min-width: 768px) {
   section {
-    padding: 80px 40px;
-  }
-  .section-title {
-    font-size: 2rem;
+    padding: 60px 32px;
   }
 }
 
 @media (min-width: 1024px) {
   section {
-    padding: 96px 48px;
+    padding: 72px 48px;
   }
 }
