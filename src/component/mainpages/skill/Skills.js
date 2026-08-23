@@ -4,7 +4,7 @@ import {
   FaJava, FaPython, FaReact, FaNodeJs, FaAws, FaDocker
 } from 'react-icons/fa';
 import {
-  SiJavascript, SiTypescript, SiAngular, SiTailwindcss,
+  SiJavascript, SiTypescript, SiTailwindcss,
   SiDjango, SiFastapi, SiMongodb, SiRedis, SiGooglecloud,
   SiPostgresql
 } from 'react-icons/si';
@@ -14,26 +14,24 @@ import './skills.css';
 const skillCategories = [
   {
     title: 'Languages',
-    tier: 'Expert',
     skills: [
-      { name: 'Java', icon: <FaJava /> },
       { name: 'Python', icon: <FaPython /> },
+      { name: 'Java', icon: <FaJava /> },
       { name: 'JavaScript', icon: <SiJavascript /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
     ],
   },
   {
     title: 'Frontend',
-    tier: 'Expert',
     skills: [
       { name: 'React.js', icon: <FaReact /> },
-      { name: 'Angular', icon: <SiAngular /> },
+      { name: 'React Native', icon: <FaReact /> },
+      { name: 'React Flow', icon: <FaReact /> },
       { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
     ],
   },
   {
     title: 'Backend & Cloud',
-    tier: 'Proficient',
     skills: [
       { name: 'FastAPI', icon: <SiFastapi /> },
       { name: 'Django', icon: <SiDjango /> },
@@ -45,7 +43,6 @@ const skillCategories = [
   },
   {
     title: 'AI & Databases',
-    tier: 'Proficient',
     skills: [
       { name: 'LLM / RAG', icon: <BsRobot /> },
       { name: 'PostgreSQL', icon: <SiPostgresql /> },
@@ -72,7 +69,6 @@ const Skills = () => {
             >
               <div className="category-header">
                 <h3 className="category-title">{category.title}</h3>
-                <span className={`category-tier category-tier--${category.tier.toLowerCase()}`}>{category.tier}</span>
               </div>
               <div className="skills-grid">
                 {category.skills.map((skill, i) => (

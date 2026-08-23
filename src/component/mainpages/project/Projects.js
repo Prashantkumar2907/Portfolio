@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiSmartphone } from 'react-icons/fi';
 import './projects.css';
 
+// DentalX was removed from this section deliberately. It is StackPro CLIENT work, not a
+// personal project -- it belongs in Experience, where it now lives. The old entry also
+// also linked directly to a client-owned non-public beta environment; publishing
+// that from a personal site is a confidentiality risk and reads as poor judgement.
 const projects = [
   {
     title: 'Bharat Briefs',
@@ -21,20 +25,20 @@ const projects = [
     demoIcon: 'playstore',
   },
   {
-    title: 'DentalX Platform',
-    subtitle: 'AI Claims Automation',
+    title: 'AllExamsPYQ',
+    subtitle: 'Exam Practice Platform',
     description:
-      'Full-stack AI claims automation using LLM-driven multi-agent orchestration for auto-validation, data correction, submission, and manual review routing. Live in production.',
-    tech: ['FastAPI', 'BigQuery', 'Vertex AI', 'Twilio'],
+      'Platform for practising previous-year exam papers, with bookmarking and per-topic performance analytics. Containerised services deployed on AWS behind a responsive cross-device client.',
+    tech: ['React Native (Expo)', 'Django REST', 'PostgreSQL', 'Docker', 'AWS'],
     highlights: [
-      'End-to-end claim lifecycle agents',
-      'RAG-based policy analysis',
-      'Voice-based patient outreach',
+      'Per-topic performance analytics',
+      'Offline-friendly practice sessions',
+      'Containerised deploy on AWS',
     ],
     github: null,
-    demo: 'https://app.beta.dental-x.ai',
-    demoLabel: 'Live App',
-    demoIcon: 'external',
+    demo: null,
+    demoLabel: null,
+    demoIcon: null,
   },
 ];
 

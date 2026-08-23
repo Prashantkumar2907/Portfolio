@@ -20,7 +20,7 @@ const Footer = () => {
             <FiGithub />
           </a>
           <a
-            href="https://www.linkedin.com/in/prashant-kumar-ab124122a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+            href="https://www.linkedin.com/in/prashant-kumar-ab124122a"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
