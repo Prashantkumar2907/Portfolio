@@ -7,7 +7,7 @@ import './introduction.css';
 
 const stats = [
   { value: '2+', label: 'Years Exp.' },
-  { value: '5+', label: 'Companies' },
+  { value: '5+', label: 'Products Shipped' },
   { value: '10+', label: 'Projects' },
   { value: '3+', label: 'AI Systems' },
 ];
@@ -85,7 +85,7 @@ const Introduction = () => {
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="hero-image-ring">
-            <img src={require('../assets/image.jpg')} alt="Prashant Kumar" />
+            <img src={require('../assets/image-600.jpg')} alt="Prashant Kumar" width="280" height="280" fetchpriority="high" />
           </div>
         </motion.div>
       </div>

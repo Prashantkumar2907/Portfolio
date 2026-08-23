@@ -31,7 +31,7 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            <img src={require('../assets/image.jpg')} alt="Prashant Kumar" />
+            <img src={require('../assets/image-600.jpg')} alt="Prashant Kumar" width="280" height="280" loading="lazy" />
           </motion.div>
 
           <motion.div
@@ -46,7 +46,7 @@ const About = () => {
               Delivered an end-to-end AI claims automation platform at <strong>DentalX</strong> that
               automates the full claim lifecycle — saving hours of manual review per day. Shipped 
               <strong> Bharat Briefs</strong> to the Google Play Store, an LLM-powered news app with 
-              multilingual summarization. Across 5 companies, I've built multi-agent orchestration 
+              multilingual summarization. Across five client platforms at StackPro, I've built multi-agent orchestration 
               systems, RAG pipelines, real-time dashboards, and voice AI integrations using React, 
               FastAPI, GCP, and Vertex AI.
             </p>

@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/icon-180.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0f172a" />
     <meta
@@ -12,19 +15,23 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Prashant Kumar | Full-Stack AI Engineer" />
-    <meta property="og:description" content="Full-Stack AI Engineer building LLM multi-agent systems, RAG pipelines, and scalable web apps. 2+ years, 5 companies, 10+ projects shipped." />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:description" content="Full-Stack AI Engineer building LLM multi-agent systems, RAG pipelines, and scalable web apps. React, FastAPI, GCP, Vertex AI. 10+ products shipped." />
+    <!-- TODO(prashant): og:image works relative for LinkedIn/Slack, but Twitter and some
+         crawlers want an ABSOLUTE url. Once you tell me your Vercel domain, these become
+         https://<domain>/og-image.jpg — and I'll add <link rel="canonical"> and og:url too.
+         Deliberately NOT added yet: a WRONG canonical can de-index the real site. -->
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prashant Kumar | Full-Stack AI Engineer" />
     <meta name="twitter:description" content="Full-Stack AI Engineer — React, FastAPI, GCP, LLMs, RAG, Vertex AI." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
     <title>Prashant Kumar | Full-Stack AI Engineer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
