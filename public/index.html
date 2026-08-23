@@ -16,25 +16,76 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Prashant Kumar | Full-Stack AI Engineer" />
     <meta property="og:description" content="Full-Stack AI Engineer building LLM multi-agent systems, RAG pipelines, and scalable web apps. React, FastAPI, GCP, Vertex AI. 10+ products shipped." />
-    <!-- TODO(prashant): og:image works relative for LinkedIn/Slack, but Twitter and some
-         crawlers want an ABSOLUTE url. Once you tell me your Vercel domain, these become
-         https://<domain>/og-image.jpg — and I'll add <link rel="canonical"> and og:url too.
-         Deliberately NOT added yet: a WRONG canonical can de-index the real site. -->
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    <meta property="og:image" content="https://prashantk29.vercel.app/og-image.jpg" />
+    <meta property="og:url" content="https://prashantk29.vercel.app" />
+    <meta property="og:site_name" content="Prashant Kumar" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prashant Kumar | Full-Stack AI Engineer" />
     <meta name="twitter:description" content="Full-Stack AI Engineer — React, FastAPI, GCP, LLMs, RAG, Vertex AI." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+    <meta name="twitter:image" content="https://prashantk29.vercel.app/og-image.jpg" />
 
+    <link rel="canonical" href="https://prashantk29.vercel.app/" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
     <title>Prashant Kumar | Full-Stack AI Engineer</title>
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Prashant Kumar",
+      "url": "https://prashantk29.vercel.app",
+      "jobTitle": "Software Development Engineer II",
+      "worksFor": {
+            "@type": "Organization",
+            "name": "StackPro"
+      },
+      "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+      },
+      "email": "mailto:mishraprashant2002@gmail.com",
+      "image": "https://prashantk29.vercel.app/og-image.jpg",
+      "description": "Full-Stack AI Engineer building LLM-driven multi-agent systems, RAG pipelines and scalable web applications.",
+      "knowsAbout": [
+            "Python",
+            "FastAPI",
+            "React",
+            "PostgreSQL",
+            "Google Cloud Platform",
+            "Vertex AI",
+            "Retrieval-Augmented Generation",
+            "LLM multi-agent orchestration",
+            "Django REST Framework",
+            "Docker"
+      ],
+      "sameAs": [
+            "https://github.com/Prashantkumar2907",
+            "https://www.linkedin.com/in/prashant-kumar-ab124122a",
+            "https://play.google.com/store/apps/details?id=com.prashant.tldrbharat"
+      ]
+}
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <h1>Prashant Kumar</h1>
+      <p>Full-Stack AI Engineer &middot; Bengaluru, India</p>
+      <p>Software Development Engineer II at StackPro. Builds LLM-driven multi-agent systems,
+         RAG pipelines and scalable full-stack applications with Python, FastAPI, React,
+         PostgreSQL, GCP and Vertex AI.</p>
+      <p>
+        <a href="https://github.com/Prashantkumar2907">GitHub</a> &middot;
+        <a href="https://www.linkedin.com/in/prashant-kumar-ab124122a">LinkedIn</a> &middot;
+        <a href="mailto:mishraprashant2002@gmail.com">Email</a> &middot;
+        <a href="/Prashant_Resume.pdf">Resume</a>
+      </p>
+      <p>This portfolio is a React application. Please enable JavaScript for the full site.</p>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>
