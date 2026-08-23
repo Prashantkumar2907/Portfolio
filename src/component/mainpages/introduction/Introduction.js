@@ -1,15 +1,16 @@
 import React from 'react';
-import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-scroll';
 import './introduction.css';
 
+// Every stat here is specific and checkable. The old set ("10+ Projects", "3+ AI Systems")
+// was vague and overlapped itself, which reads as padding rather than evidence.
 const stats = [
-  { value: '2+', label: 'Years Exp.' },
-  { value: '5+', label: 'Products Shipped' },
-  { value: '10+', label: 'Projects' },
-  { value: '3+', label: 'AI Systems' },
+  { value: '2 yrs', label: 'Experience' },
+  { value: '5', label: 'Client platforms' },
+  { value: '21 mo', label: 'Intern \u2192 SDE-2' },
+  { value: '1', label: 'App on Google Play' },
 ];
 
 const Introduction = () => {
@@ -31,16 +32,14 @@ const Introduction = () => {
           <h1 className="hero-name">
             Prashant Kumar
           </h1>
+          {/* Was a <Typewriter> cycling three job titles on an infinite loop. Three problems:
+              the <h2> rendered as a bare "|" (the cursor) to screen readers and crawlers when
+              no letters were on screen; cycling "Frontend Developer" / "Software Engineer"
+              diluted the backend positioning he is actually interviewing for; and loop={0}
+              never lets the page settle. Static text fixes all three. */}
           <h2 className="hero-role">
-            <Typewriter
-              words={['Full-Stack AI Engineer', 'Software Engineer', 'Frontend Developer']}
-              loop={0}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={40}
-              delaySpeed={2000}
-            />
+            Backend Engineer <span className="hero-role-sep">·</span> Python, FastAPI, GCP{' '}
+            <span className="hero-role-sep">·</span> LLM &amp; RAG systems
           </h2>
           <p className="hero-desc">
             Building intelligent systems with LLM-driven multi-agent orchestration, 

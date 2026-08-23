@@ -533,3 +533,12 @@
     width: 100%;
   }
 }
+
+.hero-role-sep {
+  opacity: 0.45;
+  margin: 0 0.4rem;
+  font-weight: 400;
+}
+@media (max-width: 640px) {
+  .hero-role-sep { display: block; height: 0; margin: 0; overflow: hidden; }
+}

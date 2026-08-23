@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* Poppins is loaded from index.html with preconnect. A CSS @import blocks rendering until
+   the stylesheet is fetched AND parsed, then starts a second request for the font CSS --
+   two serialised round trips before any text paints. */
 
 /* ===== THEME SYSTEM ===== */
 :root {
@@ -196,4 +198,17 @@ section {
   section {
     padding: 72px 48px;
   }
+}
+
+/* ===== REDUCED MOTION =====
+   The site animates every section on scroll via framer-motion. Users who ask the OS for
+   reduced motion should not get any of it -- this is an accessibility requirement, not a nicety. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
 }
