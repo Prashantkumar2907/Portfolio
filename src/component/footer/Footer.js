@@ -1,43 +1,31 @@
 import React from 'react';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import './footer.css';
 
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="container footer-inner">
-        <p className="footer-copy">
-          &copy; {new Date().getFullYear()} Prashant Kumar. All rights reserved.
-        </p>
+const links = [
+  { label: 'GitHub', href: 'https://github.com/Prashantkumar2907' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/prashant-kumar-ab124122a' },
+  { label: 'Email', href: 'mailto:mishraprashant2002@gmail.com' },
+];
 
-        <div className="footer-links">
+const Footer = () => (
+  <footer className="footer">
+    <div className="page footer-inner">
+      <p className="mono footer-copy">
+        © {new Date().getFullYear()} Prashant Kumar · Bengaluru, India
+      </p>
+      <nav className="footer-links" aria-label="Elsewhere">
+        {links.map(l => (
           <a
-            href="https://github.com/Prashantkumar2907"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
+            key={l.label}
+            href={l.href}
+            {...(l.href.startsWith('mailto:') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
           >
-            <FiGithub />
+            {l.label}
           </a>
-          <a
-            href="https://www.linkedin.com/in/prashant-kumar-ab124122a"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FiLinkedin />
-          </a>
-          <a
-            href="mailto:mishraprashant2002@gmail.com"
-            aria-label="Email"
-          >
-            <FiMail />
-          </a>
-        </div>
-      </div>
-    </footer>
-  );
-};
+        ))}
+      </nav>
+    </div>
+  </footer>
+);
 
 export default Footer;
-

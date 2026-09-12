@@ -1,53 +1,34 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiMapPin, FiPhone, FiMail, FiSend, FiCheckCircle } from 'react-icons/fi';
+import { motion, useReducedMotion } from 'framer-motion';
+import { FiArrowUpRight } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './contact.css';
 
-const contactInfo = [
-  {
-    icon: <FiMapPin />,
-    label: 'Location',
-    value: 'Bangalore, Karnataka, India',
-    href: 'https://maps.google.com/?q=Bangalore,Karnataka,India',
-  },
-  {
-    icon: <FiPhone />,
-    label: 'Phone',
-    value: '+91 7004970006',
-    href: 'tel:+917004970006',
-  },
-  {
-    icon: <FiMail />,
-    label: 'Email',
-    value: 'mishraprashant2002@gmail.com',
-    href: 'mailto:mishraprashant2002@gmail.com',
-  },
+const details = [
+  { k: 'Email', v: 'mishraprashant2002@gmail.com', href: 'mailto:mishraprashant2002@gmail.com' },
+  { k: 'Phone', v: '+91 7004970006', href: 'tel:+917004970006' },
+  { k: 'Location', v: 'Bengaluru, India · UTC+5:30', href: null },
 ];
+
+const EMPTY = { name: '', email: '', message: '', _hp: '' };
+
+const validate = (data) => {
+  const e = {};
+  if (!data.name.trim()) e.name = 'Please enter your name.';
+  if (!data.email.trim()) e.email = 'Please enter your email.';
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'That email address looks incomplete.';
+  if (!data.message.trim()) e.message = 'Please write a message.';
+  return e;
+};
 
 const Contact = () => {
   const formRef = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [sendError, setSendError] = useState('');
   const [errors, setErrors] = useState({});
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    _hp: '',
-  });
-
-  const validate = (data) => {
-    const e = {};
-    if (!data.name.trim()) e.name = 'Name is required';
-    if (!data.email.trim()) e.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'Enter a valid email';
-    if (!data.message.trim()) e.message = 'Message is required';
-    return e;
-  };
+  const [formData, setFormData] = useState(EMPTY);
+  const reduced = useReducedMotion();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,169 +49,134 @@ const Contact = () => {
     const validationErrors = validate(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      // Move focus to the first problem so a keyboard or screen-reader user is taken to it
+      // rather than left at a submit button that appeared to do nothing.
+      formRef.current?.querySelector(`[name="${Object.keys(validationErrors)[0]}"]`)?.focus();
       return;
     }
 
     setIsSubmitting(true);
-
-    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    setSendError('');
 
     emailjs
-      .sendForm(serviceId, templateId, formRef.current, publicKey)
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      )
       .then(
         () => {
           setSent(true);
-          setFormData({ name: '', email: '', phone: '', message: '', _hp: '' });
+          setFormData(EMPTY);
           setIsSubmitting(false);
         },
         (error) => {
-          toast.error('Failed to send message. Please try again.');
           console.error(error);
+          setSendError('That did not send. Email me directly at mishraprashant2002@gmail.com.');
           setIsSubmitting(false);
         }
       );
   };
 
-  return (
-    <section id="contact" className="contact-section">
-      <ToastContainer position="bottom-right" autoClose={4000} theme="colored" />
-      <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+  const field = (name) => ({
+    name,
+    id: `contact-${name}`,
+    value: formData[name],
+    onChange: handleChange,
+    onBlur: handleBlur,
+    'aria-invalid': errors[name] ? true : undefined,
+    'aria-describedby': errors[name] ? `contact-${name}-error` : undefined,
+    className: errors[name] ? 'is-invalid' : undefined,
+  });
 
-        <div className="contact-wrapper">
-          {/* Info Side */}
-          <motion.div
-            className="contact-info"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-          >
-            <h3>Let's Connect</h3>
-            <p className="contact-info-desc">
-              I'm open for collaboration and new opportunities. Feel free to
-              reach out — I'd love to hear from you.
+  return (
+    <section id="contact" className="contact">
+      <div className="page section-grid">
+        <h2 className="label">Contact</h2>
+
+        <motion.div
+          className="contact-grid"
+          initial={reduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
+          whileInView={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="contact-aside">
+            <p className="contact-lede">
+              Open to contract work and full-time roles. Email is the fastest way to reach me — I
+              reply within a day.
             </p>
 
-            <div className="info-list">
-              {contactInfo.map((item, i) => (
-                <a
-                  className="info-item"
-                  key={i}
-                  href={item.href}
-                  target={item.label === 'Location' ? '_blank' : undefined}
-                  rel={item.label === 'Location' ? 'noreferrer' : undefined}
-                >
-                  <span className="info-icon">{item.icon}</span>
-                  <div>
-                    <span className="info-label">{item.label}</span>
-                    <span className="info-value">{item.value}</span>
-                  </div>
-                </a>
+            <dl className="contact-details">
+              {details.map(d => (
+                <div className="contact-detail" key={d.k}>
+                  <dt className="mono contact-k">{d.k}</dt>
+                  <dd className="contact-v">
+                    {d.href
+                      ? <a className="link" href={d.href}>{d.v}</a>
+                      : d.v}
+                  </dd>
+                </div>
               ))}
+            </dl>
+          </div>
+
+          {sent ? (
+            <div className="contact-sent" role="status">
+              <p className="contact-sent-title">Message sent.</p>
+              <p className="contact-sent-body">
+                Thanks for reaching out — I&apos;ll reply within a day.
+              </p>
+              <button type="button" className="btn btn--ghost" onClick={() => setSent(false)}>
+                Send another
+              </button>
             </div>
-          </motion.div>
+          ) : (
+            <form className="contact-form" ref={formRef} onSubmit={handleSubmit} noValidate>
+              {/* Honeypot — hidden from people, tempting to bots. */}
+              <input
+                type="text"
+                name="_hp"
+                value={formData._hp}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                hidden
+              />
 
-          {/* Form Side */}
-          <AnimatePresence mode="wait">
-            {sent ? (
-              <motion.div
-                className="contact-success"
-                key="success"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.35 }}
-              >
-                <FiCheckCircle className="success-icon" />
-                <h3>Message Received!</h3>
-                <p>Thanks for reaching out. Prashant will get back to you within 24 hours.</p>
-                <button className="btn-resume" style={{ marginTop: '16px' }} onClick={() => setSent(false)}>
-                  Send Another
-                </button>
-              </motion.div>
-            ) : (
-              <motion.form
-                className="contact-form"
-                key="form"
-                ref={formRef}
-                onSubmit={handleSubmit}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                noValidate
-              >
-                {/* Honeypot — hidden from users */}
-                <input
-                  type="text"
-                  name="_hp"
-                  value={formData._hp}
-                  onChange={handleChange}
-                  style={{ display: 'none' }}
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                />
+              <div className="field">
+                <label htmlFor="contact-name">Name</label>
+                <input type="text" autoComplete="name" {...field('name')} />
+                {errors.name && <p className="field-error" id="contact-name-error">{errors.name}</p>}
+              </div>
 
-                <div className="form-row">
-                  <div className="form-field">
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Name *"
-                      className={errors.name ? 'input-error' : ''}
-                    />
-                    {errors.name && <span className="field-error">{errors.name}</span>}
-                  </div>
-                  <div className="form-field">
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Email *"
-                      className={errors.email ? 'input-error' : ''}
-                    />
-                    {errors.email && <span className="field-error">{errors.email}</span>}
-                  </div>
-                </div>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Phone (optional)"
-                />
-                <div className="form-field">
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    rows="5"
-                    placeholder="Your message... *"
-                    className={errors.message ? 'input-error' : ''}
-                  />
-                  {errors.message && <span className="field-error">{errors.message}</span>}
-                </div>
-                <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                  <FiSend size={15} />
+              <div className="field">
+                <label htmlFor="contact-email">Email</label>
+                <input type="email" autoComplete="email" {...field('email')} />
+                {errors.email && <p className="field-error" id="contact-email-error">{errors.email}</p>}
+              </div>
+
+              <div className="field">
+                <label htmlFor="contact-message">Message</label>
+                <textarea rows="6" {...field('message')} />
+                {errors.message && <p className="field-error" id="contact-message-error">{errors.message}</p>}
+              </div>
+
+              <div className="contact-submit">
+                <button type="submit" className="btn btn--solid" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending…' : 'Send message'}
+                  {!isSubmitting && <FiArrowUpRight aria-hidden="true" />}
                 </button>
-              </motion.form>
-            )}
-          </AnimatePresence>
-        </div>
+                {sendError && <p className="field-error" role="alert">{sendError}</p>}
+              </div>
+            </form>
+          )}
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default Contact;
-

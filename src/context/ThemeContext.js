@@ -8,8 +8,9 @@ export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('portfolio-theme');
     if (saved) return saved === 'dark';
-    // Default to dark theme when no saved preference exists
-    return true;
+    // Light is the default now: the site is a warm paper palette first, with dark as the
+    // alternate. Respect the OS preference when the visitor has no saved choice.
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
   });
 
   useEffect(() => {

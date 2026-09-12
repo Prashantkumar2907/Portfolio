@@ -6,15 +6,15 @@ import { lockScroll, unlockScroll } from '../../utils/scrollLock';
 import './header.css';
 
 const navItems = [
-  { to: 'home', label: 'Home' },
-  { to: 'about', label: 'About' },
   { to: 'skills', label: 'Skills' },
   { to: 'experience', label: 'Experience' },
   { to: 'projects', label: 'Projects' },
+  { to: 'resume', label: 'Résumé' },
   { to: 'contact', label: 'Contact' },
 ];
 
-const SCROLLED_AT = 30;
+const SCROLLED_AT = 24;
+const NAV_OFFSET = -72;
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -32,6 +32,7 @@ const Header = () => {
         setScrolled(window.scrollY > SCROLLED_AT);
       });
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -40,16 +41,13 @@ const Header = () => {
   }, []);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
-  const openMenu = useCallback(() => setMenuOpen(true), []);
 
   useEffect(() => {
     if (!menuOpen) return;
     lockScroll();
-    // The drawer slides off-screen with `right: -280px` rather than unmounting, so its links
-    // stayed in the tab order while closed. `inert` below removes them; moving focus into the
-    // drawer on open and back to the button on close keeps keyboard users oriented.
-    const firstLink = drawerRef.current?.querySelector('a');
-    firstLink?.focus();
+    // The drawer slides out rather than unmounting, so `inert` below keeps its links out of
+    // the tab order while closed. Focus moves in on open and back to the button on close.
+    drawerRef.current?.querySelector('a')?.focus();
 
     const onKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -64,44 +62,47 @@ const Header = () => {
     };
   }, [menuOpen]);
 
+  // react-scroll renders a bare <a> with only the props it is handed — no href — so without
+  // one these are not focusable at all. Its click handler already calls preventDefault().
+  const linkProps = (item, className) => ({
+    to: item.to,
+    href: `#${item.to}`,
+    smooth: true,
+    duration: 420,
+    offset: NAV_OFFSET,
+    spy: true,
+    activeClass: 'is-active',
+    className,
+  });
+
   return (
     <>
-      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-        <div className="header-container">
-          <Link to="home" smooth={true} duration={500} href="#home" className="logo" aria-label="Back to top">
-            PK<span className="logo-dot">.</span>
+      <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
+        <div className="page header-inner">
+          <Link to="home" href="#home" smooth={true} duration={420} className="wordmark">
+            Prashant Kumar
           </Link>
 
-          <nav className="nav-desktop" aria-label="Primary">
+          <nav className="nav" aria-label="Primary">
             {navItems.map(item => (
-              <Link
-                key={item.to}
-                to={item.to}
-                smooth={true}
-                duration={500}
-                offset={-60}
-                className="nav-link"
-                activeClass="active"
-                spy={true}
-                href={`#${item.to}`}
-              >
-                {item.label}
-              </Link>
+              <Link key={item.to} {...linkProps(item, 'nav-item')}>{item.label}</Link>
             ))}
           </nav>
 
           <div className="header-actions">
             <button
-              className="theme-toggle"
+              type="button"
+              className="icon-btn"
               onClick={toggleTheme}
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             >
               {isDark ? <FiSun /> : <FiMoon />}
             </button>
             <button
+              type="button"
               ref={menuButtonRef}
-              className="menu-toggle"
-              onClick={menuOpen ? closeMenu : openMenu}
+              className="icon-btn menu-btn"
+              onClick={() => setMenuOpen(o => !o)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
@@ -112,29 +113,16 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Overlay */}
-      <div className={`mobile-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu} />
+      <div className={`scrim${menuOpen ? ' scrim--open' : ''}`} onClick={closeMenu} />
       <nav
         id="mobile-nav"
         ref={drawerRef}
-        className={`nav-mobile ${menuOpen ? 'open' : ''}`}
+        className={`drawer${menuOpen ? ' drawer--open' : ''}`}
         aria-label="Mobile"
         {...(menuOpen ? {} : { inert: '' })}
       >
-        {navItems.map((item, i) => (
-          <Link
-            key={item.to}
-            to={item.to}
-            smooth={true}
-            duration={500}
-            offset={-60}
-            className="nav-mobile-link"
-            activeClass="active"
-            spy={true}
-            onClick={closeMenu}
-            href={`#${item.to}`}
-            style={{ animationDelay: menuOpen ? `${i * 50}ms` : '0ms' }}
-          >
+        {navItems.map(item => (
+          <Link key={item.to} {...linkProps(item, 'drawer-item')} onClick={closeMenu}>
             {item.label}
           </Link>
         ))}

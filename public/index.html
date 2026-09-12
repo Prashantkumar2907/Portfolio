@@ -7,9 +7,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/icon-180.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#FBFAF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131211" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
     <meta
       name="description"
       content="Prashant Kumar — Software Development Engineer II at StackPro, building LLM-driven multi-agent systems, RAG pipelines and scalable full-stack applications in Python, FastAPI and React."
@@ -31,7 +31,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
     <link rel="canonical" href="https://prashantk29.vercel.app/" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
@@ -81,9 +81,9 @@
       (function () {
         try {
           var saved = localStorage.getItem('portfolio-theme');
-          document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
         } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.setAttribute('data-theme', 'light');
         }
       })();
     </script>

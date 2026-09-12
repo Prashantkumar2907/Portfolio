@@ -1,68 +1,58 @@
-/* Poppins is loaded from index.html with preconnect. A CSS @import blocks rendering until
-   the stylesheet is fetched AND parsed, then starts a second request for the font CSS --
-   two serialised round trips before any text paints. */
+/* Fonts are loaded from index.html with preconnect. A CSS @import would block rendering
+   until this file is fetched AND parsed, then start a second request for the font CSS. */
 
-/* ===== THEME SYSTEM ===== */
+/* ===== TOKENS =====
+   Warm neutrals, not blue-greys. The old palette (slate #0f172a + #2563eb) is the default
+   pairing every generated portfolio ships with; the point of this one is to not be that. */
 :root {
-  --primary: #2563eb;
-  --primary-light: #3b82f6;
-  --primary-dark: #1d4ed8;
-  --primary-glow: rgba(37, 99, 235, 0.15);
-  --primary-glow-strong: rgba(37, 99, 235, 0.25);
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --transition: 0.2s ease;
-  --transition-slow: 0.4s ease;
+  --accent: #B4471F;
+  --accent-hover: #963A18;
+  --accent-wash: rgba(180, 71, 31, 0.07);
+
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.375rem;
+  --step-3: 1.875rem;
+  --display: clamp(2.5rem, 8vw, 4rem);
+
+  --measure: 68ch;
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
+  --page: 1200px;
+  --rail: 9rem;
+
+  --radius: 4px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 140ms;
+  --t-base: 220ms;
 }
 
+:root,
 [data-theme="light"] {
-  /* Without this, the browser paints its own widgets (date pickers, select
-     dropdowns, autofill, native scrollbars) in the OS scheme regardless of our
-     tokens -- a white autofill box inside a dark form. */
   color-scheme: light;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-card: #ffffff;
-  --bg-elevated: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-tertiary: #94a3b8;
-  --border: #e2e8f0;
-  --border-light: #f1f5f9;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 32px rgba(0,0,0,0.1);
-  --header-bg: rgba(255,255,255,0.85);
-  --skeleton-base: #e2e8f0;
-  --skeleton-shine: #f1f5f9;
-  --hero-bg: #0f172a;
-  --hero-text: #f8fafc;
-  --hero-sub: #94a3b8;
+  --bg: #FBFAF8;
+  --bg-soft: #F3F1EC;
+  --surface: #FFFFFF;
+  --text: #1A1917;
+  --text-2: #55514A;
+  --text-3: #736D63;
+  --line: #E2DED6;
+  --line-soft: #EDEAE3;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-card: #1e293b;
-  --bg-elevated: #1e293b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-tertiary: #64748b;
-  --border: #334155;
-  --border-light: #1e293b;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
-  --shadow-lg: 0 12px 32px rgba(0,0,0,0.4);
-  --header-bg: rgba(15,23,42,0.9);
-  --skeleton-base: #334155;
-  --skeleton-shine: #475569;
-  --hero-bg: #020617;
-  --hero-text: #f8fafc;
-  --hero-sub: #94a3b8;
+  --accent: #E8763F;
+  --accent-hover: #F28B58;
+  --accent-wash: rgba(232, 118, 63, 0.10);
+  --bg: #131211;
+  --bg-soft: #1A1917;
+  --surface: #1A1917;
+  --text: #EFEBE4;
+  --text-2: #A7A198;
+  --text-3: #8C857C;
+  --line: #2D2A26;
+  --line-soft: #232120;
 }
 
 /* ===== RESET ===== */
@@ -78,136 +68,242 @@ html {
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.65;
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
   overscroll-behavior: none;
-  line-height: 1.6;
-  transition: background-color var(--transition-slow), color var(--transition-slow);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv05' 1, 'cv11' 1;
 }
 
-/* ===== LAYOUT ===== */
-section {
-  padding: 40px 16px;
-  position: relative;
-  scroll-margin-top: 56px;
-}
+img { max-width: 100%; display: block; }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* ===== SECTION TITLE ===== */
-.section-title {
-  font-size: clamp(1.15rem, 3vw, 1.75rem);
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: clamp(1.25rem, 3vw, 2rem);
-  position: relative;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36px;
-  height: 3px;
-  background-color: var(--primary);
-  border-radius: 2px;
-}
-
-/* ===== SKELETON LOADER ===== */
-@keyframes skeleton-pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
-}
-
-@keyframes skeleton-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.skeleton {
-  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-shine) 50%, var(--skeleton-base) 75%);
-  background-size: 200% 100%;
-  animation: skeleton-shimmer 1.5s ease infinite;
-  border-radius: var(--radius-sm);
-}
-
-.skeleton-text {
-  height: 14px;
-  margin-bottom: 8px;
-  width: 100%;
-}
-
-.skeleton-text.short { width: 60%; }
-.skeleton-text.medium { width: 80%; }
-
-.skeleton-circle {
-  border-radius: 50%;
-}
-
-.skeleton-card {
-  border-radius: var(--radius-md);
-  height: 200px;
-}
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--text-tertiary);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
-}
-
-/* ===== SELECTION ===== */
 ::selection {
-  background-color: var(--primary);
+  background: var(--accent);
   color: #fff;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (min-width: 480px) {
-  section {
-    padding: 48px 20px;
+/* ===== LAYOUT ===== */
+.page {
+  width: 100%;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+section {
+  scroll-margin-top: 72px;
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+
+section + section {
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ===== SECTION LABEL =====
+   A small monospace label with a hairline, instead of a centred heading with a coloured
+   underline beneath it. Reads as a document, not a landing page. */
+.label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ===== SECTION GRID =====
+   Above 1040px the label moves into a left rail and the content takes the rest of the row.
+   Without it the page was one narrow centred column with a wide empty margin on either
+   side of a large monitor -- the content stopped where the prose measure stopped. */
+@media (min-width: 1040px) {
+  .section-grid {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: 3.5rem;
+    align-items: start;
+  }
+
+  .section-grid > .label {
+    position: sticky;
+    top: 6.5rem;
+    margin-bottom: 0;
+    padding-top: 0.35rem;
+  }
+
+  .section-grid > .label::after {
+    display: none;
   }
 }
 
-@media (min-width: 768px) {
-  section {
-    padding: 60px 32px;
+/* ===== ENTRY =====
+   Shared by experience engagements and projects: identifying information on the left,
+   the body text on the right, so both columns carry weight on a wide screen. */
+.entry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.entry-aside {
+  display: grid;
+  gap: 0.3rem;
+  align-content: start;
+}
+
+.entry-body {
+  display: grid;
+  gap: 0.85rem;
+  max-width: var(--measure);
+}
+
+@media (min-width: 820px) {
+  .entry {
+    grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 4vw, 3rem);
   }
 }
 
-@media (min-width: 1024px) {
-  section {
-    padding: 72px 48px;
+/* ===== TYPE HELPERS ===== */
+.mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.prose {
+  max-width: var(--measure);
+  color: var(--text-2);
+  font-size: var(--step-1);
+  line-height: 1.72;
+}
+
+.prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ===== LINKS ===== */
+a { color: inherit; }
+
+.link {
+  color: var(--text);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 1px;
+  transition: color var(--t-fast) var(--ease), background-size var(--t-base) var(--ease);
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  font-family: inherit;
+  font-size: var(--step--1);
+  font-weight: 500;
+  line-height: 1;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+}
+
+.btn--solid {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.btn--solid:hover {
+  background: var(--accent);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn--ghost:hover {
+  border-color: var(--text-3);
+  background: var(--bg-soft);
+}
+
+/* ===== FOCUS =====
+   :focus-visible, not :focus, so a ring appears for keyboard users without boxing a
+   control on mouse click. Never remove this without replacing it. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid CanvasText;
   }
 }
+
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 200;
+  padding: 0.65rem 1.1rem;
+  background: var(--text);
+  color: var(--bg);
+  font-size: var(--step--1);
+  font-weight: 500;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--t-base) var(--ease);
+}
+
+.skip-link:focus-visible { transform: translateY(0); }
+#content:focus { outline: none; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border: 3px solid var(--bg);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
 
 /* ===== REDUCED MOTION =====
-   The site animates every section on scroll via framer-motion. Users who ask the OS for
-   reduced motion should not get any of it -- this is an accessibility requirement, not a nicety. */
+   Sections animate in on scroll. Anyone who asks the OS for reduced motion gets none of it;
+   the components also read the preference so framer-motion skips the transform entirely. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -215,47 +311,4 @@ section {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* ===== FOCUS =====
-   Every interactive element had only the browser default ring, and the contact
-   inputs removed even that with `outline: none`. :focus-visible (not :focus) so
-   the ring shows for keyboard users without boxing a control on mouse click. */
-:where(a, button, input, textarea, select, [tabindex]):focus-visible {
-  outline: 2px solid var(--primary-light);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-/* Windows High Contrast paints its own colours and drops ours; keep a ring there. */
-@media (forced-colors: active) {
-  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
-    outline: 2px solid CanvasText;
-  }
-}
-
-/* ===== SKIP LINK =====
-   Keyboard users otherwise tab through the whole nav on every page load. */
-.skip-link {
-  position: fixed;
-  top: 8px;
-  left: 8px;
-  z-index: 1000;
-  padding: 10px 18px;
-  background: var(--primary);
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  transform: translateY(-150%);
-  transition: transform var(--transition);
-}
-
-.skip-link:focus-visible {
-  transform: translateY(0);
-}
-
-#content:focus {
-  outline: none;
 }

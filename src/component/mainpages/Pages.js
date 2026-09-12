@@ -1,20 +1,20 @@
 import React from 'react'
-import About from './about/About'
-import Contact from './contact/Contact'
-import Projects from './project/Projects'
-import Skills from './skill/Skills'
 import Introduction from './introduction/Introduction'
+import Skills from './skill/Skills'
 import Experience from './experience/Experience'
+import Projects from './project/Projects'
+import Resume from './resume/Resume'
+import Contact from './contact/Contact'
 
 const Pages = () => {
   return (
     <main id="content" tabIndex={-1}>
-        <Introduction/>
-        <About/>
-        <Skills/>
-        <Experience/>
-        <Projects/>
-        <Contact/>
+      <Introduction />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Resume />
+      <Contact />
     </main>
   )
 }

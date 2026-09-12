@@ -1,86 +1,60 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  FaJava, FaPython, FaReact, FaNodeJs, FaAws, FaDocker
-} from 'react-icons/fa';
-import {
-  SiJavascript, SiTypescript, SiTailwindcss,
-  SiDjango, SiFastapi, SiMongodb, SiRedis, SiGooglecloud,
-  SiPostgresql
-} from 'react-icons/si';
-import { BsRobot } from 'react-icons/bs';
+import { motion, useReducedMotion } from 'framer-motion';
 import './skills.css';
 
-const skillCategories = [
+// Grouped exactly as the résumé groups them, so a recruiter reading both sees one story.
+// No vendor logos: a wall of coloured brand icons is the single clearest tell of a
+// generated portfolio, and it makes scanning the actual words harder.
+const groups = [
   {
     title: 'Languages',
-    skills: [
-      { name: 'Python', icon: <FaPython /> },
-      { name: 'Java', icon: <FaJava /> },
-      { name: 'JavaScript', icon: <SiJavascript /> },
-      { name: 'TypeScript', icon: <SiTypescript /> },
-    ],
+    items: ['Python', 'JavaScript (ES6+)', 'TypeScript', 'Java', 'SQL'],
+  },
+  {
+    title: 'Backend',
+    items: ['FastAPI', 'Django REST Framework', 'Node.js', 'REST API design', 'JWT / OAuth2', 'Celery', 'WebSockets'],
+  },
+  {
+    title: 'Data',
+    items: ['PostgreSQL', 'MongoDB', 'Redis', 'BigQuery'],
   },
   {
     title: 'Frontend',
-    skills: [
-      { name: 'React.js', icon: <FaReact /> },
-      { name: 'React Native', icon: <FaReact /> },
-      { name: 'React Flow', icon: <FaReact /> },
-      { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
-    ],
+    items: ['React', 'React Native (Expo)', 'React Flow', 'Tailwind CSS', 'Material UI'],
   },
   {
-    title: 'Backend & Cloud',
-    skills: [
-      { name: 'FastAPI', icon: <SiFastapi /> },
-      { name: 'Django', icon: <SiDjango /> },
-      { name: 'Node.js', icon: <FaNodeJs /> },
-      { name: 'AWS', icon: <FaAws /> },
-      { name: 'GCP', icon: <SiGooglecloud /> },
-      { name: 'Docker', icon: <FaDocker /> },
-    ],
-  },
-  {
-    title: 'AI & Databases',
-    skills: [
-      { name: 'LLM / RAG', icon: <BsRobot /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
-      { name: 'MongoDB', icon: <SiMongodb /> },
-      { name: 'Redis', icon: <SiRedis /> },
-    ],
+    title: 'AI & Cloud',
+    items: ['LLM orchestration', 'Multi-agent architectures', 'RAG (Vertex AI Search)', 'GCP (Cloud Run, Vertex AI)', 'AWS (EC2, S3, Cognito)', 'Docker', 'CI/CD'],
   },
 ];
 
 const Skills = () => {
+  const reduced = useReducedMotion();
+
   return (
-    <section id="skills" className="skills-section">
-      <div className="container">
-        <h2 className="section-title">Technical Skills</h2>
-        <div className="skills-categories">
-          {skillCategories.map((category, idx) => (
+    <section id="skills" className="skills">
+      <div className="page section-grid">
+        <h2 className="label">Skills</h2>
+
+        <dl className="skill-rows">
+          {groups.map((g, i) => (
             <motion.div
-              className="skill-category"
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="skill-row"
+              key={g.title}
+              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
+              whileInView={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.45, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="category-header">
-                <h3 className="category-title">{category.title}</h3>
-              </div>
-              <div className="skills-grid">
-                {category.skills.map((skill, i) => (
-                  <div className="skill-chip" key={i}>
-                    <span className="skill-icon">{skill.icon}</span>
-                    <span className="skill-label">{skill.name}</span>
-                  </div>
+              <dt className="mono skill-title">{g.title}</dt>
+              <dd className="skill-items">
+                {g.items.map(item => (
+                  <span className="skill-item" key={item}>{item}</span>
                 ))}
-              </div>
+              </dd>
             </motion.div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );
