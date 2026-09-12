@@ -33,27 +33,6 @@
   letter-spacing: 0.06em;
 }
 
-.category-tier {
-  font-size: 0.65rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.category-tier--expert {
-  background: rgba(37, 99, 235, 0.12);
-  color: var(--primary-light);
-  border: 1px solid rgba(37, 99, 235, 0.25);
-}
-
-.category-tier--proficient {
-  background: rgba(99, 102, 241, 0.1);
-  color: #a5b4fc;
-  border: 1px solid rgba(99, 102, 241, 0.2);
-}
-
 .skills-grid {
   display: flex;
   flex-wrap: wrap;

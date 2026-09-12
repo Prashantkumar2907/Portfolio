@@ -8,7 +8,7 @@ import Experience from './experience/Experience'
 
 const Pages = () => {
   return (
-    <main>
+    <main id="content" tabIndex={-1}>
         <Introduction/>
         <About/>
         <Skills/>

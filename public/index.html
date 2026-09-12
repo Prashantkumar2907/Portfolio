@@ -7,15 +7,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/icon-180.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="dark light" />
     <meta
       name="description"
-      content="Prashant Kumar — Full-Stack AI Engineer building LLM-driven multi-agent systems, scalable full-stack architectures, and seamless user experiences."
+      content="Prashant Kumar — Software Development Engineer II at StackPro, building LLM-driven multi-agent systems, RAG pipelines and scalable full-stack applications in Python, FastAPI and React."
     />
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Prashant Kumar | Full-Stack AI Engineer" />
-    <meta property="og:description" content="Full-Stack AI Engineer building LLM multi-agent systems, RAG pipelines, and scalable web apps. React, FastAPI, GCP, Vertex AI. 10+ products shipped." />
+    <meta property="og:title" content="Prashant Kumar | Software Development Engineer II" />
+    <meta property="og:description" content="SDE-2 at StackPro. LLM multi-agent systems, RAG pipelines and scalable web apps across five client platforms. Python, FastAPI, React, GCP, Vertex AI." />
     <meta property="og:image" content="https://prashantk29.vercel.app/og-image.jpg" />
     <meta property="og:url" content="https://prashantk29.vercel.app" />
     <meta property="og:site_name" content="Prashant Kumar" />
@@ -23,8 +25,8 @@
     <meta property="og:image:height" content="630" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Prashant Kumar | Full-Stack AI Engineer" />
-    <meta name="twitter:description" content="Full-Stack AI Engineer — React, FastAPI, GCP, LLMs, RAG, Vertex AI." />
+    <meta name="twitter:title" content="Prashant Kumar | Software Development Engineer II" />
+    <meta name="twitter:description" content="SDE-2 at StackPro — Python, FastAPI, React, GCP, LLMs, RAG, Vertex AI." />
     <meta name="twitter:image" content="https://prashantk29.vercel.app/og-image.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,7 +35,7 @@
     <link rel="canonical" href="https://prashantk29.vercel.app/" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
-    <title>Prashant Kumar | Full-Stack AI Engineer</title>
+    <title>Prashant Kumar | Software Development Engineer II</title>
     <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -53,7 +55,7 @@
       },
       "email": "mailto:mishraprashant2002@gmail.com",
       "image": "https://prashantk29.vercel.app/og-image.jpg",
-      "description": "Full-Stack AI Engineer building LLM-driven multi-agent systems, RAG pipelines and scalable web applications.",
+      "description": "Software Development Engineer II at StackPro, building LLM-driven multi-agent systems, RAG pipelines and scalable web applications.",
       "knowsAbout": [
             "Python",
             "FastAPI",
@@ -75,9 +77,19 @@
     </script>
   </head>
   <body>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('portfolio-theme');
+          document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : 'dark');
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
     <noscript>
       <h1>Prashant Kumar</h1>
-      <p>Full-Stack AI Engineer &middot; Bengaluru, India</p>
+      <p>Software Development Engineer II &middot; Bengaluru, India</p>
       <p>Software Development Engineer II at StackPro. Builds LLM-driven multi-agent systems,
          RAG pipelines and scalable full-stack applications with Python, FastAPI, React,
          PostgreSQL, GCP and Vertex AI.</p>

@@ -17,6 +17,10 @@
 }
 
 [data-theme="light"] {
+  /* Without this, the browser paints its own widgets (date pickers, select
+     dropdowns, autofill, native scrollbars) in the OS scheme regardless of our
+     tokens -- a white autofill box inside a dark form. */
+  color-scheme: light;
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-tertiary: #f1f5f9;
@@ -39,6 +43,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
   --bg-tertiary: #334155;
@@ -68,7 +73,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   overscroll-behavior: none;
   -webkit-text-size-adjust: 100%;
 }
@@ -89,6 +93,7 @@ body {
 section {
   padding: 40px 16px;
   position: relative;
+  scroll-margin-top: 56px;
 }
 
 .container {
@@ -210,5 +215,47 @@ section {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  html { scroll-behavior: auto; }
+}
+
+/* ===== FOCUS =====
+   Every interactive element had only the browser default ring, and the contact
+   inputs removed even that with `outline: none`. :focus-visible (not :focus) so
+   the ring shows for keyboard users without boxing a control on mouse click. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Windows High Contrast paints its own colours and drops ours; keep a ring there. */
+@media (forced-colors: active) {
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid CanvasText;
+  }
+}
+
+/* ===== SKIP LINK =====
+   Keyboard users otherwise tab through the whole nav on every page load. */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: 10px 18px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform var(--transition);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+#content:focus {
+  outline: none;
 }

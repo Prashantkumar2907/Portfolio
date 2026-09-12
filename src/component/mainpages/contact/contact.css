@@ -127,9 +127,8 @@
   transition: border-color 0.2s ease;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
   border-color: var(--primary);
 }
 

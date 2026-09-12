@@ -1,32 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
+// The bar used to be React state updated on every scroll event, animating `width`.
+// That re-rendered the component on every pixel and made the browser re-layout the bar each
+// time. Writing transform on the node directly inside rAF keeps it on the compositor and
+// out of React's render path entirely.
 const ScrollProgress = () => {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => {
+    let frame = 0;
+
+    const paint = () => {
+      frame = 0;
       const el = document.documentElement;
-      const scrolled = el.scrollTop || document.body.scrollTop;
       const total = el.scrollHeight - el.clientHeight;
-      setProgress(total > 0 ? (scrolled / total) * 100 : 0);
+      const ratio = total > 0 ? el.scrollTop / total : 0;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${ratio})`;
     };
 
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(paint);
+    };
+
+    paint();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
     <div
+      ref={barRef}
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
-        width: `${progress}%`,
+        width: '100%',
         height: '3px',
-        background: 'linear-gradient(90deg, #2563eb, #6366f1)',
+        background: 'linear-gradient(90deg, var(--primary), #6366f1)',
         zIndex: 9999,
-        transition: 'width 0.1s linear',
-        borderRadius: '0 2px 2px 0',
+        transform: 'scaleX(0)',
+        transformOrigin: 'left center',
+        willChange: 'transform',
         pointerEvents: 'none',
       }}
       aria-hidden="true"

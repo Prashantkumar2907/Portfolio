@@ -10,6 +10,7 @@ import './index.css'
 const App = () => {
   return (
     <ThemeProvider>
+      <a className="skip-link" href="#content">Skip to content</a>
       <ScrollProgress />
       <div className="app">
         <Header />

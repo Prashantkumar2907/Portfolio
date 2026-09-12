@@ -68,6 +68,7 @@
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-secondary);
+  text-decoration: none;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -76,9 +77,18 @@
   padding: 4px 0;
 }
 
+.header:not(.scrolled) .nav-link {
+  color: var(--hero-sub);
+}
+
 .nav-link:hover,
 .nav-link.active {
   color: var(--primary);
+}
+
+.header:not(.scrolled) .nav-link:hover,
+.header:not(.scrolled) .nav-link.active {
+  color: var(--primary-light);
 }
 
 .nav-link::after {

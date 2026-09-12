@@ -38,16 +38,16 @@ const Introduction = () => {
               diluted the backend positioning he is actually interviewing for; and loop={0}
               never lets the page settle. Static text fixes all three. */}
           <h2 className="hero-role">
-            Backend Engineer <span className="hero-role-sep">·</span> Python, FastAPI, GCP{' '}
-            <span className="hero-role-sep">·</span> LLM &amp; RAG systems
+            Software Development Engineer II <span className="hero-role-sep">·</span> StackPro
           </h2>
+          <p className="hero-stack">Python · FastAPI · GCP · LLM &amp; RAG systems</p>
           <p className="hero-desc">
-            Building intelligent systems with LLM-driven multi-agent orchestration, 
+            Building intelligent systems with LLM-driven multi-agent orchestration,
             scalable full-stack architectures, and seamless user experiences.
           </p>
 
           <div className="hero-actions">
-            <Link to="contact" smooth={true} duration={500} offset={-60} className="btn-primary">
+            <Link to="contact" smooth={true} duration={500} offset={-60} href="#contact" className="btn-primary">
               Get in Touch
             </Link>
             <a href="/Prashant_Resume.pdf" download className="btn-outline">
@@ -90,7 +90,7 @@ const Introduction = () => {
       </div>
 
       {/* Scroll hint */}
-      <Link to="about" smooth={true} duration={500} offset={-60} className="scroll-hint" aria-label="Scroll down">
+      <Link to="about" smooth={true} duration={500} offset={-60} href="#about" className="scroll-hint" aria-label="Scroll down">
         <FiChevronDown />
       </Link>
     </section>
