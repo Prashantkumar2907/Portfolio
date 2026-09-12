@@ -104,8 +104,7 @@ const Contact = () => {
         >
           <div className="contact-aside">
             <p className="contact-lede">
-              Open to contract work and full-time roles. Email is the fastest way to reach me — I
-              reply within a day.
+              Email is the fastest way to reach me — I read everything and reply within a day.
             </p>
 
             <dl className="contact-details">

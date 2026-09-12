@@ -10,7 +10,6 @@ const facts = [
   { k: 'Now', v: 'SDE-2 at StackPro' },
   { k: 'Based', v: 'Bengaluru, India · UTC+5:30' },
   { k: 'Focus', v: 'Python · FastAPI · GCP · LLM & RAG' },
-  { k: 'Open to', v: 'Contract work, remote' },
 ];
 
 const links = [
